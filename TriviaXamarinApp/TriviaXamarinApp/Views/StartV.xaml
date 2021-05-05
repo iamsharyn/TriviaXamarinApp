@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:TriviaXamarinApp.ViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TriviaXamarinApp.Views.StartV">
+
+    <ContentPage.BindingContext>
+        <local:StartVM></local:StartVM>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Crimson">
+            <Label Text="Welcome to Trivia App" TextColor="AliceBlue"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Button Text="Sign Up" HorizontalOptions="Center" Command="{Binding SignUpCommand}"></Button>
+            <Button Text="Login" HorizontalOptions="Center" Command="{Binding LoginCommand}"></Button>
+            <Button Text="Trivia Guest Page" HorizontalOptions="Center" Command="{Binding GuestTriviaCommand}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
