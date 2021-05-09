@@ -6,6 +6,9 @@ using Xamarin.Forms;
 using TriviaXamarinApp.Services;
 using TriviaXamarinApp.Models;
 using System.Threading.Tasks;
+using TriviaXamarinApp.Views;
+using System.Diagnostics;
+
 
 namespace TriviaXamarinApp.ViewModels
 {
@@ -23,7 +26,27 @@ namespace TriviaXamarinApp.ViewModels
 
         private async void Login()
         {
-            //Task<User> loginTask = TriviaWebAPIProxy.
+            try
+            {
+                TriviaWebAPIProxy client = TriviaWebAPIProxy.CreateProxy();
+                Task<User> loginTask = client.LoginAsync(Email, Pass);
+                loginTask.Wait();
+                User u = loginTask.Result;
+
+                if (u != null)
+                {
+                    Page p = new MainV();
+                    await Application.Current.MainPage.Navigation.PushModalAsync(p);
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Login Failed", "Wrong credentials. Try again.", "OK");
+                }
+            }
+            catch
+            {
+                await App.Current.MainPage.DisplayAlert("Login Failed", "Problem login in. Try again later.", "OK");
+            }
         }
 
     }

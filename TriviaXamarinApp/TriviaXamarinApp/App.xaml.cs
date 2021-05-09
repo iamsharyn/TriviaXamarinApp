@@ -1,9 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using TriviaXamarinApp.Services;
-using TriviaXamarinApp.Models;
-using System.Threading.Tasks;
+﻿using Xamarin.Forms;
 using TriviaXamarinApp.Views;
 
 namespace TriviaXamarinApp
@@ -13,7 +8,6 @@ namespace TriviaXamarinApp
         public App()
         {
             InitializeComponent();
-            
             
             MainPage = new NavigationPage(new StartV());
         }

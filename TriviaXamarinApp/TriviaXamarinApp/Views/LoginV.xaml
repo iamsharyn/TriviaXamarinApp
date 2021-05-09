@@ -14,11 +14,13 @@
         <StackLayout>
             <Entry Placeholder="Enter email:" Text ="{Binding Email}"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand"
+                MinimumWidthRequest="160" />
 
             <Entry Placeholder="Enter Password" Text="{Binding Pass}"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand"
+                   MinimumWidthRequest="160"/>
 
             <Button Text="Log in!" Command="{Binding LoginCommand}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Button>
         </StackLayout>
