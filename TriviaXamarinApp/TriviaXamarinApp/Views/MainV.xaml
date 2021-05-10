@@ -4,15 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="TriviaXamarinApp.Views.MainV">
+             x:Class="TriviaXamarinApp.Views.MainV"
+             Title="{Binding User.NickName, StringFormat='Hello {0}!'}">
     <ContentPage.BindingContext>
         <local:MainVM></local:MainVM>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
             <Button Text="Go to TRIVIA!!!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" Command="{Binding TriviaCommand}" />

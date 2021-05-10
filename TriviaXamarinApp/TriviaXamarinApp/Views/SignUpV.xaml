@@ -4,17 +4,15 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="TriviaXamarinApp.Views.SignUpV">
+             x:Class="TriviaXamarinApp.Views.SignUpV"
+             Title="Sign Up">
     <ContentPage.BindingContext>
         <local:SignUpVM></local:SignUpVM>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        
-            
+
+
         <StackLayout>
-            <Label Text="Sign Up!!!!!!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
             <Entry Text="{Binding Email}" VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" Placeholder="Enter Email!!!!!" />
 

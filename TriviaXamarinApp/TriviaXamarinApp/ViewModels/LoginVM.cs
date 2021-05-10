@@ -35,7 +35,11 @@ namespace TriviaXamarinApp.ViewModels
 
                 if (u != null)
                 {
-                    Page p = new MainV();
+                    Page p = new MainV(); // Creating next page
+
+                    // Saving application's data
+                    ((App)Application.Current).User = u;
+
                     await Application.Current.MainPage.Navigation.PushModalAsync(p);
                 }
                 else

@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="TriviaXamarinApp.Views.StartV">
+             x:Class="TriviaXamarinApp.Views.StartV"
+             Title="Welcome to Trivia App!">
 
     <ContentPage.BindingContext>
         <local:StartVM></local:StartVM>

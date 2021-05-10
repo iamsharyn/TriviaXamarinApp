@@ -16,10 +16,5 @@ namespace TriviaXamarinApp.Views
         {
             InitializeComponent();
         }
-
-        public MainV(User u)
-        {
-            this.BindingContext.
-        }
     }
 }
