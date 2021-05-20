@@ -17,19 +17,19 @@ namespace TriviaXamarinApp.ViewModels
         private async void Login()
         {
             Page p = new LoginV();
-            await Application.Current.MainPage.Navigation.PushModalAsync(p);
+            await Application.Current.MainPage.Navigation.PushAsync(p);
         }
 
         private async void SignUp()
         {
             Page p = new SignUpV();
-            await Application.Current.MainPage.Navigation.PushModalAsync(p);
+            await Application.Current.MainPage.Navigation.PushAsync(p);
         }
 
         private async void GuestTrivia()
         {
             Page p = new GuestTriviaV();
-            await Application.Current.MainPage.Navigation.PushModalAsync(p);
+            await Application.Current.MainPage.Navigation.PushAsync(p);
         }
 
         public StartVM()

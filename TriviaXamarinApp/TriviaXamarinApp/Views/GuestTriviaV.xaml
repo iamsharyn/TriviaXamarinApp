@@ -17,10 +17,10 @@
             <Label Text="{Binding Que.CreatorNickName, StringFormat='See {0}s question:'}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding Que.QText'}"
+            <Label Text="{Binding Que.QText}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
-            <Entry Text="{Binding UserAns" Placeholder="Type your answer..."
+            <Entry Text="{Binding UserAns}" Placeholder="Type your answer..."
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Button Text="Answer!" Command="{Binding AnswerCommand}"

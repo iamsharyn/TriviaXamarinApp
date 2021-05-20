@@ -6,6 +6,7 @@ using TriviaXamarinApp.Models;
 using TriviaXamarinApp.Services;
 using Xamarin.Forms;
 using System.Linq; // For arrays Contain method
+using System.Threading.Tasks;
 
 namespace TriviaXamarinApp.ViewModels
 {
@@ -14,18 +15,47 @@ namespace TriviaXamarinApp.ViewModels
         public AmericanQuestion Que { get; }
         public string UserAns { get; set; }
         public ICommand AnswerCommand;
+        /*const AmericanQuestion EMPTY_QUE = new AmericanQuestion
+        {
+            QText = "",
+            CorrectAnswer = "",
+            OtherAnswers = { },
+            CreatorNickName = ""
+        }; */
 
 
         public GuestTriviaVM()
         {
-            Que = FetchQue(); // Replace
+            Que = null; // Replace
             UserAns = "";
             AnswerCommand = new Command(Answer);
         }
 
-        private AmericanQuestion FetchQue()
+        private async Task<AmericanQuestion> FetchQueAsync()
         {
+            TriviaWebAPIProxy client = TriviaWebAPIProxy.CreateProxy();
 
+            try
+            {
+                AmericanQuestion q = await client.GetRandomQuestion();
+
+                if (q != null)
+                {
+                    return q;
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Problem Fetching Question", "Try again and check internet connection.", "OK");
+                    await App.Current.MainPage.Navigation.PopAsync();
+                }
+            }
+            catch
+            {
+                await App.Current.MainPage.DisplayAlert("Problem Fetching Question", "Try again and check internet connection.", "OK");
+                await App.Current.MainPage.Navigation.PopAsync();
+            }
+
+            return null;
         }
 
         private async void Answer()
