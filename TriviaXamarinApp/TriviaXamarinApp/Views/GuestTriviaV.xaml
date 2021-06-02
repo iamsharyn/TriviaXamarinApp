@@ -14,12 +14,16 @@
             <Label Text="{Binding Que.CreatorNickName, StringFormat='See {0}s question:'}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding Que.QText}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
+
             <Entry Text="{Binding UserAns}" Placeholder="Type your answer..."
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <CollectionView ItemsSource="{Binding Answers}"
+                SelectionChanged="CollectionView_SelectionChanged"
+                SelectionMode="Single">
+                
+                
+            </CollectionView>
             <Button Text="Answer!" Command="{Binding AnswerCommand}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />

@@ -10,18 +10,28 @@ using System.Threading.Tasks;
 
 namespace TriviaXamarinApp.ViewModels
 {
-    class GuestTriviaVM
+    public class GuestTriviaVM
     {
+        public string[] Answers { get; set; }
         public AmericanQuestion Que { get; }
         public string UserAns { get; set; }
-        public ICommand AnswerCommand;
 
+        public ICommand AnswerCommand;
 
         public GuestTriviaVM(AmericanQuestion q)
         {
-            UserAns = "";
-            AnswerCommand = new Command(Answer);
+            UserAns = null;
+            AnswerCommand = new Command(Answer, CanInteract);
             Que = q;
+            Answers = new string[Que.OtherAnswers.Length + 1];
+            int ind = 0;
+            foreach(string s in Que.OtherAnswers)
+            {
+                Answers[ind++] = s;
+            }
+            Answers[ind] = Que.CorrectAnswer;
+            Random random = new Random();
+            Answers = Answers.OrderBy(x => random.Next()).ToArray();
         }
 
         private async Task<AmericanQuestion> FetchQue()
@@ -53,15 +63,12 @@ namespace TriviaXamarinApp.ViewModels
 
         private async void Answer()
         {
-
+            
         }
-        
-        private bool IsCorrect(AmericanQuestion q, string ans)
-        {
-            if (q.CorrectAnswer.Equals(ans))
-                return true;
 
-            return q.OtherAnswers.Contains(ans);
+        private bool CanInteract()
+        {
+            return UserAns != null;
         }
     }
 }
