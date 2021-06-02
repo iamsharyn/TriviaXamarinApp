@@ -6,8 +6,10 @@ namespace TriviaXamarinApp
 {
     public partial class App : Application
     {
+        public const int ANS_FOR_ADD = 3; // The constant nummber of correct answers an user has to answer for the ability to add one question
         public User User { get; set; } // Logged in user
         public int CorrectAns { get; set; } // Correct answers
+
 
         public App()
         {

@@ -1,15 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:TriviaXamarinApp.ViewModels"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="TriviaXamarinApp.Views.AddQueV">
+             x:Class="TriviaXamarinApp.Views.AddQueV"
+             Title="Add Question">
+    <ContentPage.BindingContext>
+        <local:AddQueVM></local:AddQueVM>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="Here is the place to add a question to the app!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+
+
+            <Entry Placeholder="Enter the question's correct answer" Text ="{Binding Que.CorrectAnswer}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                MinimumWidthRequest="160" />
+
+            <Editor Placeholder="Enter the question's other answers here, each in another line!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                Text="{Binding OtherAnsText}"
+                HeightRequest="100"></Editor>
+
+            <Button VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                Text="Add question!"
+                Command="{Binding AddCommand}"></Button>
+
+            <Label Text="{Binding CorrectAns, StringFormat='You have {0} correct answers.'}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"></Label>
+            <Label Text="{Binding PossibleAdds, StringFormat='Thus, you can add {0} questions!'}"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"></Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

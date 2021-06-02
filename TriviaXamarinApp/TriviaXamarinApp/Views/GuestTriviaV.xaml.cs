@@ -21,7 +21,9 @@ namespace TriviaXamarinApp.Views
 
         private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ((GuestTriviaVM) this.BindingContext).UserAns = ((IReadOnlyList<string>) e.CurrentSelection)[0];
+            string val = (string)e.CurrentSelection[0];
+
+            ((GuestTriviaVM)this.BindingContext).UserAns = val;
         }
     }
 }

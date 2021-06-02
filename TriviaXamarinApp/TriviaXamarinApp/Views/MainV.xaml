@@ -26,6 +26,13 @@
             <Button Text="Logout"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" Command="{Binding LogoutCommand}" />
+
+            <Label Text="{Binding CorrectAns, StringFormat='You have {0} correct answers so far.'}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"></Label>
+            <Label Text="{Binding PossibleAdds, StringFormat='These allows you to add {0} questions!'}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"></Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

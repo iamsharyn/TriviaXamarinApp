@@ -11,16 +11,17 @@
             <Label Text="Hey guest!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding Que.CreatorNickName, StringFormat='See {0}s question:'}"
+            <Label Text="{Binding Que.CreatorNickName, StringFormat='See question by {0}:'}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 
-            <Entry Text="{Binding UserAns}" Placeholder="Type your answer..."
+            <Label Text="{Binding Que.QText}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+
             <CollectionView ItemsSource="{Binding Answers}"
-                SelectionChanged="CollectionView_SelectionChanged"
-                SelectionMode="Single">
+                SelectionMode="Single"
+                SelectionChanged="CollectionView_SelectionChanged">
                 
                 
             </CollectionView>

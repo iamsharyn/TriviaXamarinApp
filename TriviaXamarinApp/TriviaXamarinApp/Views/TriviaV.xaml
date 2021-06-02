@@ -4,10 +4,32 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="TriviaXamarinApp.Views.TriviaV">
+             x:Class="TriviaXamarinApp.Views.TriviaV"
+             Title="Trivia">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="{Binding User.NickName, StringFormat='Hey {0}!'}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding Que.CreatorNickName, StringFormat='See question by {0}:'}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="{Binding Que.QText}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <CollectionView ItemsSource="{Binding Answers}"
+                SelectionMode="Single"
+                SelectionChanged="CollectionView_SelectionChanged">
+
+
+            </CollectionView>
+            <Button Text="Answer!" Command="{Binding AnswerCommand}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="{Binding CorrectAns, StringFormat='You have {0} correct answers. Continue answering!'}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>
