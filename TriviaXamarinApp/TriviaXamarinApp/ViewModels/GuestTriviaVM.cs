@@ -15,23 +15,16 @@ namespace TriviaXamarinApp.ViewModels
         public AmericanQuestion Que { get; }
         public string UserAns { get; set; }
         public ICommand AnswerCommand;
-        /*const AmericanQuestion EMPTY_QUE = new AmericanQuestion
-        {
-            QText = "",
-            CorrectAnswer = "",
-            OtherAnswers = { },
-            CreatorNickName = ""
-        }; */
 
 
-        public GuestTriviaVM()
+        public GuestTriviaVM(AmericanQuestion q)
         {
-            Que = null; // Replace
             UserAns = "";
             AnswerCommand = new Command(Answer);
+            Que = q;
         }
 
-        private async Task<AmericanQuestion> FetchQueAsync()
+        private async Task<AmericanQuestion> FetchQue()
         {
             TriviaWebAPIProxy client = TriviaWebAPIProxy.CreateProxy();
 

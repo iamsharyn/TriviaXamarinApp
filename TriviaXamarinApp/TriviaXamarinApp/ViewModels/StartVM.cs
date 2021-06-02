@@ -4,6 +4,10 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 using TriviaXamarinApp.Views;
+using TriviaXamarinApp.Models;
+using TriviaXamarinApp.Services;
+using System.Threading.Tasks;
+
 
 namespace TriviaXamarinApp.ViewModels
 {
@@ -28,8 +32,19 @@ namespace TriviaXamarinApp.ViewModels
 
         private async void GuestTrivia()
         {
-            Page p = new GuestTriviaV();
-            await Application.Current.MainPage.Navigation.PushAsync(p);
+            try
+            {
+                var client = TriviaWebAPIProxy.CreateProxy();
+                AmericanQuestion q = await client.GetRandomQuestion();
+                if (q == null)
+                    throw new Exception();
+                Page p = new GuestTriviaV(q);
+                await Application.Current.MainPage.Navigation.PushAsync(p);
+            }
+            catch
+            {
+                await App.Current.MainPage.DisplayAlert("Problem Fetching Question", "Try again and check internet connection.", "OK");
+            }
         }
 
         public StartVM()

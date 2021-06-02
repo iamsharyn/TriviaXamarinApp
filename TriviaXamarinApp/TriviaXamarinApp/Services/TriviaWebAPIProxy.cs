@@ -37,7 +37,7 @@ namespace TriviaXamarinApp.Services
         {
             try
             {
-                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/Login?email={email}&pass={pass}");
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/Login?email={email}&pass={pass}").ConfigureAwait(false);
                 if (response.IsSuccessStatusCode)
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
@@ -100,7 +100,7 @@ namespace TriviaXamarinApp.Services
                 };
                 string json = JsonSerializer.Serialize<AmericanQuestion>(q, options);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/PostNewQuestion",content);
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/PostNewQuestion",content).ConfigureAwait(false);
                 if (response.IsSuccessStatusCode)
                 {
                     
@@ -132,7 +132,7 @@ namespace TriviaXamarinApp.Services
                 };
                 string json = JsonSerializer.Serialize<AmericanQuestion>(q, options);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/DeleteQuestion", content);
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/DeleteQuestion", content).ConfigureAwait(false);
                 if (response.IsSuccessStatusCode)
                 {
 
@@ -166,7 +166,7 @@ namespace TriviaXamarinApp.Services
                 };
                 string json = JsonSerializer.Serialize<User>(u, options);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/RegisterUser", content);
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/RegisterUser", content).ConfigureAwait(false);
                 if (response.IsSuccessStatusCode)
                 {
 
