@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="TriviaXamarinApp.Views.GuestTriviaV">
+             x:Class="TriviaXamarinApp.Views.GuestTriviaV"
+             Title="Guest Trivia">
 
     <ContentPage.Content>
         <StackLayout>

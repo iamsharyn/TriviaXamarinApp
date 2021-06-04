@@ -9,15 +9,30 @@ using Xamarin.Forms;
 
 namespace TriviaXamarinApp.ViewModels
 {
-    class MainVM
+    class MainVM : BaseVM
     {
+        private int correctAns;
         public ICommand TriviaCommand { get; }
         public Command AddCommand { get; }
         public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; }
         public ICommand LogoutCommand { get; }
         public User User => ((App)Application.Current).User;
-        public int CorrectAns { get; }
+        public int CorrectAns
+        {
+            get => correctAns;
+
+            private set
+            {
+                correctAns = value; // change page CorrectAns-value
+                
+                // notify property changed
+                OnPropertyChanged(nameof(CorrectAns));
+                OnPropertyChanged(nameof(PossibleAdds)); // since PossibleAdds is dependant on CorrectAns
+                AddCommand.ChangeCanExecute(); // check if command may be executed or not
+            }
+        }
+
         public int PossibleAdds => CorrectAns / App.ANS_FOR_ADD;
 
         public MainVM()
@@ -60,6 +75,10 @@ namespace TriviaXamarinApp.ViewModels
             Application.Current.MainPage = new NavigationPage(new StartV()); // Create a new navigation page being StartV
         }
 
+        /* To be called when view is reactivated, so binded values shown might not be up-to-date. */
+        public void RefreshView() => CorrectAns = ((App)Application.Current).CorrectAns;
+
+        /* Gets no parameters and returns whether a question may be added by the user */
         public bool CanAdd()
         {
             return PossibleAdds > 0;

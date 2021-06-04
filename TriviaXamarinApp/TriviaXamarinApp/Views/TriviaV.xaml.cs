@@ -23,7 +23,7 @@ namespace TriviaXamarinApp.Views
         {
             string val = (string)e.CurrentSelection[0];
 
-            ((GuestTriviaVM)this.BindingContext).UserAns = val;
+            ((TriviaVM)this.BindingContext).UserAns = val;
         }
     }
 }

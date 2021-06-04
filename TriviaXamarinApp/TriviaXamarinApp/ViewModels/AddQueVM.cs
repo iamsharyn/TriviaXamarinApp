@@ -46,14 +46,17 @@ namespace TriviaXamarinApp.ViewModels
             set
             {
                 otherAnsText = value;
-                UpdateOtherAns(); // Update Que.OtherAnswers
                 OnPropertyChanged(OtherAnsText);
+                UpdateOtherAns(); // Update Que.OtherAnswers
+                AddCommand.ChangeCanExecute(); // check if question may be added or not
             }
         }
         public Command AddCommand { get; }
 
         public AddQueVM()
         {
+            AddCommand = new Command(Add, CanAdd);
+
             CorrectAns = ((App)Application.Current).CorrectAns;
             Que = new AmericanQuestion()
             {
@@ -63,8 +66,6 @@ namespace TriviaXamarinApp.ViewModels
                 CreatorNickName = User.NickName
             };
             OtherAnsText = "";
-            
-            AddCommand = new Command(Add, CanAdd);
         }
 
         private async void Add()
@@ -101,7 +102,8 @@ namespace TriviaXamarinApp.ViewModels
 
         private bool CanAdd()
         {
-            return (PossibleAdds > 0) && (Que.OtherAnswers.Length > 0);
+            return (PossibleAdds > 0) && (Que.OtherAnswers.Length > 0) 
+                && (Que.QText != "") && (Que.CorrectAnswer != "");
         }
     }
 }

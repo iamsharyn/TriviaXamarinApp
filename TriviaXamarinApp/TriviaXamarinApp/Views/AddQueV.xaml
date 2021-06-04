@@ -15,6 +15,10 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 
+            <Entry Placeholder="Enter the question's text" Text ="{Binding Que.QText}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                MinimumWidthRequest="160" />
 
             <Entry Placeholder="Enter the question's correct answer" Text ="{Binding Que.CorrectAnswer}"
                 VerticalOptions="CenterAndExpand" 
