@@ -13,8 +13,8 @@ namespace TriviaXamarinApp.ViewModels
 {
     public class GuestTriviaVM : BaseVM
     {
-        private string userAns;
-        private AmericanQuestion que;
+        private string userAns; // The answer the user has chosen (changes dynamically, based on user's actions).
+        private AmericanQuestion que; // The current question shown
         public Command AnswerCommand { get; }
         public ObservableCollection<string> Answers { get; set; }
         public AmericanQuestion Que
@@ -57,7 +57,6 @@ namespace TriviaXamarinApp.ViewModels
         private async Task<AmericanQuestion> FetchQue()
         {
             TriviaWebAPIProxy client = TriviaWebAPIProxy.CreateProxy();
-
             try
             {
                 AmericanQuestion q = await client.GetRandomQuestion();
@@ -70,6 +69,7 @@ namespace TriviaXamarinApp.ViewModels
             }
         }
 
+        // Enters the answer the user has chosen.
         private async void Answer()
         {
             if (UserAns.Equals(Que.CorrectAnswer))
@@ -104,9 +104,9 @@ namespace TriviaXamarinApp.ViewModels
             }
             arr[ind] = Que.CorrectAnswer;
             var rnd = new Random();
-            arr = arr.OrderBy(x => rnd.Next()).ToArray();
+            arr = arr.OrderBy(x => rnd.Next()).ToArray(); // Orderes the answers (including the right one) randomally 
             Answers = new ObservableCollection<string>(arr);
-            OnPropertyChanged(nameof(Answers)); // notify  Answers has changed
+            OnPropertyChanged(nameof(Answers)); // notify Answers have changed
         }
 
         private bool CanInteract()

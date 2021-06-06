@@ -9,7 +9,7 @@ namespace TriviaXamarinApp.ViewModels
 {
     public class AddQueVM : BaseVM
     {
-        private int correctAns;
+        private int correctAns; // index for the right answer
         private string otherAnsText; // for storing the user's other answers text (containing each other answer, each in another line)
         private AmericanQuestion que;
         public AmericanQuestion Que
@@ -38,7 +38,8 @@ namespace TriviaXamarinApp.ViewModels
                 }
             }
         }
-        public int PossibleAdds => CorrectAns / App.ANS_FOR_ADD;
+        // The number of possible questions is total right-answered questions divided by needed answers to create a question.
+        public int PossibleAdds => CorrectAns / App.ANS_FOR_ADD; 
         public string OtherAnsText
         {
             get => otherAnsText;
